@@ -1,7 +1,7 @@
 {
-  "name": "RoboticEnterpriseFramework1",
+  "name": "TestSuite_Performer_Payment-related",
   "projectId": "54cd1135-f603-426e-8dec-fa640959c339",
-  "description": "Robotic Enterprise Framework",
+  "description": "Performer_Payment-related\r\n",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.23.4]",
@@ -36,7 +36,6 @@
     "projectProfile": "Developement",
     "outputType": "Process",
     "libraryOptions": {
-      "includeOriginalXaml": false,
       "privateWorkflows": []
     },
     "processOptions": {
