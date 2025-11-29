@@ -1,6 +1,6 @@
 {
-  "Name": "TestSuite_Performer_Payment-related",
+  "Name": "TestSuite_Performer",
   "ProjectType": "Process",
-  "Description": "Performer_Payment-related\r\n",
+  "Description": "Performer",
   "MainFile": "Main.xaml"
 }

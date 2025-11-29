@@ -1,9 +1,10 @@
 {
-  "name": "TestSuite_Performer_Payment-related",
+  "name": "TestSuite_Performer",
   "projectId": "54cd1135-f603-426e-8dec-fa640959c339",
-  "description": "Performer_Payment-related\r\n",
+  "description": "Performer",
   "main": "Main.xaml",
   "dependencies": {
+    "UiPath.DataService.Activities": "[25.9.3]",
     "UiPath.Excel.Activities": "[2.23.4]",
     "UiPath.System.Activities": "[24.10.0]",
     "UiPath.Testing.Activities": "[24.10.0]",
