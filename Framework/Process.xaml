@@ -111,11 +111,23 @@
       <AssemblyReference>Microsoft.Extensions.DependencyModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="960.6666666666666,4546.666666666667" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="934,1379.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="strCallId" />
-      <Variable x:TypeArguments="x:String" Name="strAgent" />
-      <Variable x:TypeArguments="s:DateTime" Name="dtDate" />
+      <Variable x:TypeArguments="x:String" Name="strCallId">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">ASD</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="strAgent">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">ASD</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="s:DateTime" Name="dtDate">
+        <Variable.Default>
+          <Literal x:TypeArguments="s:DateTime" Value="2021-01-02" />
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="x:Decimal" Name="decTime" />
       <Variable x:TypeArguments="x:String" Name="strTopic" />
       <Variable x:TypeArguments="x:String" Name="strAnswered" />
@@ -123,9 +135,6 @@
       <Variable x:TypeArguments="x:Int32" Name="intSpeed" />
       <Variable x:TypeArguments="x:Decimal" Name="decAvgTalkDuration" />
       <Variable x:TypeArguments="x:Int32" Name="intSatisfactionRating" />
-      <Variable x:TypeArguments="x:String" Name="strSpeedTag" />
-      <Variable x:TypeArguments="x:String" Name="strHITL" />
-      <Variable x:TypeArguments="x:String" Name="strPriorityTag" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -134,7 +143,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="478.6666666666667,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Process&quot;]" />
-    <ui:MultipleAssign DisplayName="TransactionItems" sap:VirtualizedContainerService.HintSize="478.6666666666667,517.3333333333334" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+    <ui:MultipleAssign DisplayName="TransactionItems" sap:VirtualizedContainerService.HintSize="478.6666666666667,425.3333333333333" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -201,14 +210,6 @@
               <InArgument x:TypeArguments="x:Int32">[convert.ToInt32(in_TransactionItem.SpecificContent("Speed of answer in seconds"))]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[strSpeedTag]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("SpeedCategory").ToString]</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
             <ui:AssignOperation.To>
               <OutArgument x:TypeArguments="x:Decimal">[decAvgTalkDuration]</OutArgument>
@@ -225,22 +226,6 @@
               <InArgument x:TypeArguments="x:Int32">[convert.ToInt32(in_TransactionItem.SpecificContent("Satisfaction rating"))]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[strHITL]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("HITL").ToString]</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
-          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
-            <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:String">[strPriorityTag]</OutArgument>
-            </ui:AssignOperation.To>
-            <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[in_TransactionItem.SpecificContent("PriorityTag").ToString]</InArgument>
-            </ui:AssignOperation.Value>
-          </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
       <sap:WorkflowViewStateService.ViewState>
@@ -250,649 +235,71 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[strTopic]" sap:VirtualizedContainerService.HintSize="478.6666666666667,1048.6666666666667" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-      <Switch.Default>
-        <Sequence DisplayName="Default" sap:VirtualizedContainerService.HintSize="450,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_6">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </Sequence>
-      </Switch.Default>
+    <uda:CreateEntityRecord x:TypeArguments="t:RRAgenticReview" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c7f8de82-34cd-f011-8196-00224882fdd3" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="478.6666666666667,677.3333333333334" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_12" InputEntityInFieldView="[new TestSuite_Performer.RRAgenticReview() With {  .Agent = strAgent,  .Answered = strAnswered,  .AvgTalkDuration = decAvgTalkDuration,  .CallId = strCallId,  .DateCall = dtDate,  .Resolved = strResolved,  .SatisfactionRating = intSatisfactionRating,  .SpeedOfAnswer = intSpeed,  .Time = decTime,  .Topic = strTopic }]" TimeoutInMs="30000">
+      <uda:CreateEntityRecord.State>
+        <udam:RecordState>
+          <udam:RecordState.SelectedFields>
+            <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="10">
+              <udam:DynamicEntityField Id="d2f8de82-34cd-f011-8196-00224882fdd3" Name="Agent">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String">[strAgent]</InArgument>
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
+              <udam:DynamicEntityField Id="d6f8de82-34cd-f011-8196-00224882fdd3" Name="Answered">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String">[strAnswered]</InArgument>
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
+              <udam:DynamicEntityField Id="d9f8de82-34cd-f011-8196-00224882fdd3" Name="AvgTalkDuration">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:Decimal">[decAvgTalkDuration]</InArgument>
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
+              <udam:DynamicEntityField Id="d1f8de82-34cd-f011-8196-00224882fdd3" Name="CallId">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String">[strCallId]</InArgument>
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
+              <udam:DynamicEntityField Id="d3f8de82-34cd-f011-8196-00224882fdd3" Name="DateCall">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="s:DateTime">[dtDate]</InArgument>
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
+              <udam:DynamicEntityField Id="d7f8de82-34cd-f011-8196-00224882fdd3" Name="Resolved">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String">[strResolved]</InArgument>
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
+              <udam:DynamicEntityField Id="daf8de82-34cd-f011-8196-00224882fdd3" Name="SatisfactionRating">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:Decimal">[intSatisfactionRating]</InArgument>
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
+              <udam:DynamicEntityField Id="d8f8de82-34cd-f011-8196-00224882fdd3" Name="SpeedOfAnswer">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:Decimal">[intSpeed]</InArgument>
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
+              <udam:DynamicEntityField Id="d4f8de82-34cd-f011-8196-00224882fdd3" Name="Time">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:Decimal">[decTime]</InArgument>
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
+              <udam:DynamicEntityField Id="d5f8de82-34cd-f011-8196-00224882fdd3" Name="Topic">
+                <udam:DynamicEntityField.ArgumentValue>
+                  <InArgument x:TypeArguments="x:String">[strTopic]</InArgument>
+                </udam:DynamicEntityField.ArgumentValue>
+              </udam:DynamicEntityField>
+            </scg:List>
+          </udam:RecordState.SelectedFields>
+        </udam:RecordState>
+      </uda:CreateEntityRecord.State>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <Sequence x:Key="Technical Support" DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_2">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <uda:CreateEntityRecord x:TypeArguments="t:RRTechnicalSupport" InputEntity="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="RR Payment Related" EntityId="bf7eebfe-facc-f011-8196-00224882fdd3" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_9" InputEntityInFieldView="[new TestSuite_Performer.RRTechnicalSupport() With {  .Agent = strAgent,  .Answered = strAnswered,  .AvgTalkDuration = decAvgTalkDuration,  .DateCall = dtDate,  .HITL = strHITL,  .PriorityTag = strPriorityTag,  .Resolved = strResolved,  .SatisfactionRating = intSatisfactionRating,  .SpeedCategory = strSpeedTag,  .SpeedOfAnswer = intSpeed,  .Time = decTime,  .Topic = strTopic }]" IsInRecordView="False" TimeoutInMs="30000">
-          <uda:CreateEntityRecord.State>
-            <udam:RecordState>
-              <udam:RecordState.SelectedFields>
-                <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="12">
-                  <udam:DynamicEntityField Id="c97eebfe-facc-f011-8196-00224882fdd3" Name="Agent">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strAgent]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="cd7eebfe-facc-f011-8196-00224882fdd3" Name="Answered">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strAnswered]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="d07eebfe-facc-f011-8196-00224882fdd3" Name="AvgTalkDuration">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[decAvgTalkDuration]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="ca7eebfe-facc-f011-8196-00224882fdd3" Name="DateCall">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="s:DateTime">[dtDate]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="d47eebfe-facc-f011-8196-00224882fdd3" Name="HITL">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strHITL]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="d27eebfe-facc-f011-8196-00224882fdd3" Name="PriorityTag">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strPriorityTag]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="ce7eebfe-facc-f011-8196-00224882fdd3" Name="Resolved">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strResolved]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="d17eebfe-facc-f011-8196-00224882fdd3" Name="SatisfactionRating">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[intSatisfactionRating]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="d37eebfe-facc-f011-8196-00224882fdd3" Name="SpeedCategory">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strSpeedTag]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="cf7eebfe-facc-f011-8196-00224882fdd3" Name="SpeedOfAnswer">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[intSpeed]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="cb7eebfe-facc-f011-8196-00224882fdd3" Name="Time">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[decTime]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="cc7eebfe-facc-f011-8196-00224882fdd3" Name="Topic">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strTopic]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                </scg:List>
-              </udam:RecordState.SelectedFields>
-            </udam:RecordState>
-          </uda:CreateEntityRecord.State>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </uda:CreateEntityRecord>
-      </Sequence>
-      <Sequence x:Key="Payment related" DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_3">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <uda:CreateEntityRecord x:TypeArguments="t:RRPaymentRelated" InputEntity="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="RR Payment Related" EntityId="8b3b5dbf-efcc-f011-8196-00224882fdd3" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_6" InputEntityInFieldView="[new TestSuite_Performer.RRPaymentRelated() With {  .Agent = strAgent,  .Answered = strAnswered,  .AvgTalkDuration = decAvgTalkDuration,  .DateCall = dtDate,  .HITL = strHITL,  .PriorityTag = strPriorityTag,  .Resolved = strResolved,  .SatisfactionRating = intSatisfactionRating,  .SpeedCategory = strSpeedTag,  .SpeedOfAnswer = intSpeed,  .Time = decTime,  .Topic = strTopic }]" IsInRecordView="False" TimeoutInMs="30000">
-          <uda:CreateEntityRecord.State>
-            <udam:RecordState>
-              <udam:RecordState.SelectedFields>
-                <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="12">
-                  <udam:DynamicEntityField Id="963b5dbf-efcc-f011-8196-00224882fdd3" Name="Agent">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strAgent]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="9a3b5dbf-efcc-f011-8196-00224882fdd3" Name="Answered">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strAnswered]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="9d3b5dbf-efcc-f011-8196-00224882fdd3" Name="AvgTalkDuration">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[decAvgTalkDuration]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="973b5dbf-efcc-f011-8196-00224882fdd3" Name="DateCall">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="s:DateTime">[dtDate]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="a13b5dbf-efcc-f011-8196-00224882fdd3" Name="HITL">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strHITL]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="9f3b5dbf-efcc-f011-8196-00224882fdd3" Name="PriorityTag">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strPriorityTag]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="9b3b5dbf-efcc-f011-8196-00224882fdd3" Name="Resolved">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strResolved]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="9e3b5dbf-efcc-f011-8196-00224882fdd3" Name="SatisfactionRating">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[intSatisfactionRating]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="a03b5dbf-efcc-f011-8196-00224882fdd3" Name="SpeedCategory">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strSpeedTag]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="9c3b5dbf-efcc-f011-8196-00224882fdd3" Name="SpeedOfAnswer">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[intSpeed]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="983b5dbf-efcc-f011-8196-00224882fdd3" Name="Time">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[decTime]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="993b5dbf-efcc-f011-8196-00224882fdd3" Name="Topic">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strTopic]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                </scg:List>
-              </udam:RecordState.SelectedFields>
-            </udam:RecordState>
-          </uda:CreateEntityRecord.State>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </uda:CreateEntityRecord>
-      </Sequence>
-      <Sequence x:Key="Admin Support" DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_4">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <uda:CreateEntityRecord x:TypeArguments="t:RRAdminSupport" InputEntity="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="RR Admin Support" EntityId="03cc3184-ebcc-f011-8196-00224882fdd3" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_5" InputEntityInFieldView="[new TestSuite_Performer.RRAdminSupport() With {  .Agent = strAgent,  .Answered = strAnswered,  .AvgTalkDuration = decAvgTalkDuration,  .DateCall = dtDate,  .HITL = strHITL,  .PriorityTag = strPriorityTag,  .Resolved = strResolved,  .SatisfactionRating = intSatisfactionRating,  .SpeedCategory = strSpeedTag,  .SpeedOfAnswer = intSpeed,  .Time = decTime,  .Topic = strTopic }]" IsInRecordView="False" TimeoutInMs="30000">
-          <uda:CreateEntityRecord.State>
-            <udam:RecordState>
-              <udam:RecordState.SelectedFields>
-                <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="12">
-                  <udam:DynamicEntityField Id="0ecc3184-ebcc-f011-8196-00224882fdd3" Name="Agent">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strAgent]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="12cc3184-ebcc-f011-8196-00224882fdd3" Name="Answered">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strAnswered]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="15cc3184-ebcc-f011-8196-00224882fdd3" Name="AvgTalkDuration">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[decAvgTalkDuration]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="0fcc3184-ebcc-f011-8196-00224882fdd3" Name="DateCall">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="s:DateTime">[dtDate]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="19cc3184-ebcc-f011-8196-00224882fdd3" Name="HITL">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strHITL]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="17cc3184-ebcc-f011-8196-00224882fdd3" Name="PriorityTag">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strPriorityTag]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="13cc3184-ebcc-f011-8196-00224882fdd3" Name="Resolved">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strResolved]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="16cc3184-ebcc-f011-8196-00224882fdd3" Name="SatisfactionRating">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[intSatisfactionRating]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="18cc3184-ebcc-f011-8196-00224882fdd3" Name="SpeedCategory">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strSpeedTag]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="14cc3184-ebcc-f011-8196-00224882fdd3" Name="SpeedOfAnswer">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[intSpeed]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="10cc3184-ebcc-f011-8196-00224882fdd3" Name="Time">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[decTime]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="11cc3184-ebcc-f011-8196-00224882fdd3" Name="Topic">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strTopic]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                </scg:List>
-              </udam:RecordState.SelectedFields>
-            </udam:RecordState>
-          </uda:CreateEntityRecord.State>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </uda:CreateEntityRecord>
-      </Sequence>
-      <Sequence x:Key="Streaming" DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_5">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <uda:CreateEntityRecord x:TypeArguments="t:RRStreaming" InputEntity="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="RR Streaming" EntityId="667d0843-eccc-f011-8196-00224882fdd3" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_7" InputEntityInFieldView="[new TestSuite_Performer.RRStreaming() With {  .agent = strAgent,  .answered = strAnswered,  .avgTalkDuration = decAvgTalkDuration,  .dateCall = dtDate,  .hitl = strHITL,  .priorityTag = strPriorityTag,  .resolved = strResolved,  .satisfactionRating = intSatisfactionRating,  .speedCategory = strSpeedTag,  .speedOfAnswer = intSpeed,  .time = decTime,  .topic = strTopic }]" IsInRecordView="False" TimeoutInMs="30000">
-          <uda:CreateEntityRecord.State>
-            <udam:RecordState>
-              <udam:RecordState.SelectedFields>
-                <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="12">
-                  <udam:DynamicEntityField Id="717d0843-eccc-f011-8196-00224882fdd3" Name="agent">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strAgent]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="757d0843-eccc-f011-8196-00224882fdd3" Name="answered">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strAnswered]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="787d0843-eccc-f011-8196-00224882fdd3" Name="avgTalkDuration">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[decAvgTalkDuration]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="727d0843-eccc-f011-8196-00224882fdd3" Name="dateCall">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="s:DateTime">[dtDate]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="7c7d0843-eccc-f011-8196-00224882fdd3" Name="hitl">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strHITL]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="7a7d0843-eccc-f011-8196-00224882fdd3" Name="priorityTag">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strPriorityTag]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="767d0843-eccc-f011-8196-00224882fdd3" Name="resolved">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strResolved]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="797d0843-eccc-f011-8196-00224882fdd3" Name="satisfactionRating">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[intSatisfactionRating]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="7b7d0843-eccc-f011-8196-00224882fdd3" Name="speedCategory">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strSpeedTag]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="777d0843-eccc-f011-8196-00224882fdd3" Name="speedOfAnswer">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[intSpeed]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="737d0843-eccc-f011-8196-00224882fdd3" Name="time">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[decTime]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="747d0843-eccc-f011-8196-00224882fdd3" Name="topic">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strTopic]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                </scg:List>
-              </udam:RecordState.SelectedFields>
-            </udam:RecordState>
-          </uda:CreateEntityRecord.State>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </uda:CreateEntityRecord>
-      </Sequence>
-      <Sequence x:Key="Contract Related" DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,116" sap2010:WorkflowViewState.IdRef="Sequence_7">
-        <sap:WorkflowViewStateService.ViewState>
-          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          </scg:Dictionary>
-        </sap:WorkflowViewStateService.ViewState>
-        <uda:CreateEntityRecord x:TypeArguments="t:RRContractRelated" InputEntity="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="RR Contract Related" EntityId="d3a1208c-eccc-f011-8196-00224882fdd3" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_8" InputEntityInFieldView="[new TestSuite_Performer.RRContractRelated() With {  .Agent = strAgent,  .Answered = strAnswered,  .AvgTalkDuration = decAvgTalkDuration,  .DateCall = dtDate,  .HITL = strHITL,  .PriorityTag = strPriorityTag,  .Resolved = strResolved,  .SatisfactionRating = intSatisfactionRating,  .SpeedCategory = strSpeedTag,  .SpeedOfAnswer = intSpeed,  .Time = decTime,  .Topic = strTopic }]" IsInRecordView="False" TimeoutInMs="30000">
-          <uda:CreateEntityRecord.State>
-            <udam:RecordState>
-              <udam:RecordState.SelectedFields>
-                <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="12">
-                  <udam:DynamicEntityField Id="dea1208c-eccc-f011-8196-00224882fdd3" Name="Agent">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strAgent]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="e2a1208c-eccc-f011-8196-00224882fdd3" Name="Answered">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strAnswered]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="e5a1208c-eccc-f011-8196-00224882fdd3" Name="AvgTalkDuration">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[decAvgTalkDuration]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="dfa1208c-eccc-f011-8196-00224882fdd3" Name="DateCall">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="s:DateTime">[dtDate]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="e9a1208c-eccc-f011-8196-00224882fdd3" Name="HITL">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strHITL]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="e7a1208c-eccc-f011-8196-00224882fdd3" Name="PriorityTag">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strPriorityTag]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="e3a1208c-eccc-f011-8196-00224882fdd3" Name="Resolved">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strResolved]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="e6a1208c-eccc-f011-8196-00224882fdd3" Name="SatisfactionRating">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[intSatisfactionRating]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="e8a1208c-eccc-f011-8196-00224882fdd3" Name="SpeedCategory">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strSpeedTag]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="e4a1208c-eccc-f011-8196-00224882fdd3" Name="SpeedOfAnswer">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[intSpeed]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="e0a1208c-eccc-f011-8196-00224882fdd3" Name="Time">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:Decimal">[decTime]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                  <udam:DynamicEntityField Id="e1a1208c-eccc-f011-8196-00224882fdd3" Name="Topic">
-                    <udam:DynamicEntityField.ArgumentValue>
-                      <InArgument x:TypeArguments="x:String">[strTopic]</InArgument>
-                    </udam:DynamicEntityField.ArgumentValue>
-                  </udam:DynamicEntityField>
-                </scg:List>
-              </udam:RecordState.SelectedFields>
-            </udam:RecordState>
-          </uda:CreateEntityRecord.State>
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </uda:CreateEntityRecord>
-      </Sequence>
-    </Switch>
-    <If Condition="[strAnswered = &quot;Y&quot; AND strResolved = &quot;Y&quot; AND intSatisfactionRating &lt; 3]" DisplayName="Agentic / HITL Check" sap:VirtualizedContainerService.HintSize="478.6666666666667,1447.3333333333333" sap2010:WorkflowViewState.IdRef="If_1">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,1080" sap2010:WorkflowViewState.IdRef="Sequence_8">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <uda:CreateEntityRecord x:TypeArguments="t:RRAgenticReview" EntityId="{x:Null}" InputEntity="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="AGENTIC REVIEW" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,844.6666666666666" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_11" InputEntityInFieldView="[new TestSuite_Performer.RRAgenticReview() With {  .CallId = strCallId,  .Agent = strAgent,  .Answered = strAnswered,  .AvgTalkDuration = decAvgTalkDuration,  .DateCall = dtDate,  .HITL = strHITL,  .PriorityTag = strPriorityTag,  .Resolved = strResolved,  .SatisfactionRating = intSatisfactionRating,  .SpeedCategory = strSpeedTag,  .SpeedOfAnswer = intSpeed,  .Time = decTime,  .Topic = strTopic }]" IsInRecordView="False" TimeoutInMs="30000">
-            <uda:CreateEntityRecord.State>
-              <udam:RecordState RequiredFieldCount="1">
-                <udam:RecordState.SelectedFields>
-                  <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="13">
-                    <udam:DynamicEntityField Id="d1f8de82-34cd-f011-8196-00224882fdd3" IsRequired="True" Name="CallId">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strCallId]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="d2f8de82-34cd-f011-8196-00224882fdd3" Name="Agent">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strAgent]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="d6f8de82-34cd-f011-8196-00224882fdd3" Name="Answered">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strAnswered]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="d9f8de82-34cd-f011-8196-00224882fdd3" Name="AvgTalkDuration">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:Decimal">[decAvgTalkDuration]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="d3f8de82-34cd-f011-8196-00224882fdd3" Name="DateCall">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="s:DateTime">[dtDate]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="ddf8de82-34cd-f011-8196-00224882fdd3" Name="HITL">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strHITL]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="dbf8de82-34cd-f011-8196-00224882fdd3" Name="PriorityTag">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strPriorityTag]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="d7f8de82-34cd-f011-8196-00224882fdd3" Name="Resolved">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strResolved]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="daf8de82-34cd-f011-8196-00224882fdd3" Name="SatisfactionRating">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:Decimal">[intSatisfactionRating]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="dcf8de82-34cd-f011-8196-00224882fdd3" Name="SpeedCategory">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strSpeedTag]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="d8f8de82-34cd-f011-8196-00224882fdd3" Name="SpeedOfAnswer">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:Decimal">[intSpeed]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="d4f8de82-34cd-f011-8196-00224882fdd3" Name="Time">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:Decimal">[decTime]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="d5f8de82-34cd-f011-8196-00224882fdd3" Name="Topic">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strTopic]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                  </scg:List>
-                </udam:RecordState.SelectedFields>
-              </udam:RecordState>
-            </uda:CreateEntityRecord.State>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </uda:CreateEntityRecord>
-          <ui:LogMessage DisplayName="Log: Added only DataFabric" sap:VirtualizedContainerService.HintSize="416,171.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Trace" Message="[&quot;Agentic Review + &quot; &amp; strTopic]" />
-        </Sequence>
-      </If.Then>
-      <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_9">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <ui:LogMessage DisplayName="Log: Added only DataFabric" sap:VirtualizedContainerService.HintSize="416,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Trace" Message="[strTopic]" />
-        </Sequence>
-      </If.Else>
-    </If>
-    <If Condition="[intSatisfactionRating = 1]" DisplayName="HITL Referral" sap:VirtualizedContainerService.HintSize="478.6666666666667,1256.6666666666667" sap2010:WorkflowViewState.IdRef="If_2">
-      <sap:WorkflowViewStateService.ViewState>
-        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-        </scg:Dictionary>
-      </sap:WorkflowViewStateService.ViewState>
-      <If.Then>
-        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,1031.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-          <uda:CreateEntityRecord x:TypeArguments="t:RRHITL" InputEntity="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="HITL REVIEW" EntityId="d486985b-30cd-f011-8196-00224882fdd3" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="416,796" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_12" InputEntityInFieldView="[new TestSuite_Performer.RRHITL() With {  .agent = strAgent,  .answered = strAnswered,  .avgTalkDuration = decAvgTalkDuration,  .dateCall = dtDate,  .hitl = strHITL,  .priorityTag = strPriorityTag,  .resolved = strResolved,  .satisfactionRating = intSatisfactionRating,  .speedCategory = strSpeedTag,  .speedOfAnswer = intSpeed,  .time = decTime,  .topic = strTopic }]" IsInRecordView="False" TimeoutInMs="30000">
-            <uda:CreateEntityRecord.State>
-              <udam:RecordState>
-                <udam:RecordState.SelectedFields>
-                  <scg:List x:TypeArguments="udam:DynamicEntityField" Capacity="12">
-                    <udam:DynamicEntityField Id="df86985b-30cd-f011-8196-00224882fdd3" Name="agent">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strAgent]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="e386985b-30cd-f011-8196-00224882fdd3" Name="answered">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strAnswered]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="e686985b-30cd-f011-8196-00224882fdd3" Name="avgTalkDuration">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:Decimal">[decAvgTalkDuration]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="e086985b-30cd-f011-8196-00224882fdd3" Name="dateCall">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="s:DateTime">[dtDate]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="ea86985b-30cd-f011-8196-00224882fdd3" Name="hitl">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strHITL]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="e886985b-30cd-f011-8196-00224882fdd3" Name="priorityTag">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strPriorityTag]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="e486985b-30cd-f011-8196-00224882fdd3" Name="resolved">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strResolved]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="e786985b-30cd-f011-8196-00224882fdd3" Name="satisfactionRating">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:Decimal">[intSatisfactionRating]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="e986985b-30cd-f011-8196-00224882fdd3" Name="speedCategory">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strSpeedTag]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="e586985b-30cd-f011-8196-00224882fdd3" Name="speedOfAnswer">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:Decimal">[intSpeed]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="e186985b-30cd-f011-8196-00224882fdd3" Name="time">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:Decimal">[decTime]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                    <udam:DynamicEntityField Id="e286985b-30cd-f011-8196-00224882fdd3" Name="topic">
-                      <udam:DynamicEntityField.ArgumentValue>
-                        <InArgument x:TypeArguments="x:String">[strTopic]</InArgument>
-                      </udam:DynamicEntityField.ArgumentValue>
-                    </udam:DynamicEntityField>
-                  </scg:List>
-                </udam:RecordState.SelectedFields>
-              </udam:RecordState>
-            </uda:CreateEntityRecord.State>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </uda:CreateEntityRecord>
-          <ui:LogMessage DisplayName="Log: Added only DataFabric" sap:VirtualizedContainerService.HintSize="416,171.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Trace" Message="[&quot;HITL Review&quot;]" />
-        </Sequence>
-      </If.Then>
-      <If.Else>
-        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,94.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_11">
-          <sap:WorkflowViewStateService.ViewState>
-            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-            </scg:Dictionary>
-          </sap:WorkflowViewStateService.ViewState>
-        </Sequence>
-      </If.Else>
-    </If>
+    </uda:CreateEntityRecord>
   </Sequence>
 </Activity>
