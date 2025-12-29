@@ -2,6 +2,7 @@
   <x:Members>
     <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(ui:QueueItem)" />
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="DataFabricRecord" Type="OutArgument(t:RRAgenticReview)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -111,24 +112,12 @@
       <AssemblyReference>Microsoft.Extensions.DependencyModel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="934,1379.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="722.6666666666666,1556" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="strCallId">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">ASD</Literal>
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:String" Name="strAgent">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">ASD</Literal>
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="s:DateTime" Name="dtDate">
-        <Variable.Default>
-          <Literal x:TypeArguments="s:DateTime" Value="2021-01-02" />
-        </Variable.Default>
-      </Variable>
-      <Variable x:TypeArguments="x:Decimal" Name="decTime" />
+      <Variable x:TypeArguments="x:String" Name="strCallId" />
+      <Variable x:TypeArguments="x:String" Name="strAgent" />
+      <Variable x:TypeArguments="s:DateTime" Name="dtDate" />
+      <Variable x:TypeArguments="x:Double" Name="dtTime" />
       <Variable x:TypeArguments="x:String" Name="strTopic" />
       <Variable x:TypeArguments="x:String" Name="strAnswered" />
       <Variable x:TypeArguments="x:String" Name="strResolved" />
@@ -143,7 +132,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="478.6666666666667,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Started Processing: &quot; &amp; in_TransactionItem.SpecificContent(&quot;CallId&quot;).ToString]" />
-    <ui:MultipleAssign DisplayName="TransactionItems" sap:VirtualizedContainerService.HintSize="478.6666666666667,425.3333333333333" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+    <ui:MultipleAssign DisplayName="TransactionItems" sap:VirtualizedContainerService.HintSize="478.6666666666667,425.3333333333333" sap2010:WorkflowViewState.IdRef="MultipleAssign_5">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -172,10 +161,10 @@
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
             <ui:AssignOperation.To>
-              <OutArgument x:TypeArguments="x:Decimal">[decTime]</OutArgument>
+              <OutArgument x:TypeArguments="x:Double">[dtTime]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:Decimal">[convert.ToDecimal(in_TransactionItem.SpecificContent("Time"))]</InArgument>
+              <InArgument x:TypeArguments="x:Double">[CType(TimeSpan.Parse(in_TransactionItem.SpecificContent("Time").ToString),TimeSpan).TotalSeconds]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -235,7 +224,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:MultipleAssign>
-    <uda:CreateEntityRecord x:TypeArguments="t:RRAgenticReview" InputEntity="{x:Null}" IsInRecordView="{x:Null}" OutputEntity="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c7f8de82-34cd-f011-8196-00224882fdd3" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="478.6666666666667,677.3333333333334" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_12" InputEntityInFieldView="[new TestSuite_Performer.RRAgenticReview() With {  .Agent = strAgent,  .Answered = strAnswered,  .AvgTalkDuration = decAvgTalkDuration,  .CallId = strCallId,  .DateCall = dtDate,  .Resolved = strResolved,  .SatisfactionRating = intSatisfactionRating,  .SpeedOfAnswer = intSpeed,  .Time = decTime,  .Topic = strTopic }]" TimeoutInMs="30000">
+    <uda:CreateEntityRecord x:TypeArguments="t:RRAgenticReview" InputEntity="{x:Null}" IsInRecordView="{x:Null}" VisibleDynamicPropertiesInfo="{x:Null}" ContinueOnError="False" DisplayName="Create Entity Record" EntityId="c7f8de82-34cd-f011-8196-00224882fdd3" ExpansionDepth="2" sap:VirtualizedContainerService.HintSize="478.6666666666667,686.6666666666666" sap2010:WorkflowViewState.IdRef="CreateEntityRecord`1_12" InputEntityInFieldView="[new TestSuite_Performer.RRAgenticReview() With {  .Agent = strAgent,  .Answered = strAnswered,  .AvgTalkDuration = decAvgTalkDuration,  .CallId = strCallId,  .DateCall = dtDate,  .Resolved = strResolved,  .SatisfactionRating = intSatisfactionRating,  .SpeedOfAnswer = intSpeed,  .Time = dtTime,  .Topic = strTopic }]" OutputEntity="[DataFabricRecord]" TimeoutInMs="30000">
       <uda:CreateEntityRecord.State>
         <udam:RecordState>
           <udam:RecordState.SelectedFields>
@@ -282,7 +271,7 @@
               </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="d4f8de82-34cd-f011-8196-00224882fdd3" Name="Time">
                 <udam:DynamicEntityField.ArgumentValue>
-                  <InArgument x:TypeArguments="x:Decimal">[decTime]</InArgument>
+                  <InArgument x:TypeArguments="x:Decimal">[dtTime]</InArgument>
                 </udam:DynamicEntityField.ArgumentValue>
               </udam:DynamicEntityField>
               <udam:DynamicEntityField Id="d5f8de82-34cd-f011-8196-00224882fdd3" Name="Topic">
@@ -301,5 +290,6 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uda:CreateEntityRecord>
+    <ui:LogMessage DisplayName="Log Message Process Start" sap:VirtualizedContainerService.HintSize="478.6666666666667,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Exiting Process&quot;]" />
   </Sequence>
 </Activity>

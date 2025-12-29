@@ -19,7 +19,7 @@
   ],
   "schemaVersion": "4.0",
   "studioVersion": "24.10.0.0",
-  "projectVersion": "1.0.3",
+  "projectVersion": "1.0.4",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -57,13 +57,6 @@
       },
       {
         "editingStatus": "InProgress",
-        "testCaseId": "c5955365-af1a-41f8-88a2-ca79d3becc45",
-        "testCaseType": "TestCase",
-        "executionTemplateType": "Local",
-        "fileName": "Tests\\InitAllApplicationsTestCase.xaml"
-      },
-      {
-        "editingStatus": "InProgress",
         "testCaseId": "db54db05-a54c-4b1b-b9b0-d18578aa1fcc",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
@@ -71,24 +64,38 @@
       },
       {
         "editingStatus": "InProgress",
-        "testCaseId": "e5483f4d-c03b-4ac8-afa4-1fcdb8e1c6e8",
+        "testCaseId": "0771dcb5-0909-4c44-b7f6-890c3d03cbac",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
-        "fileName": "Tests\\MainTestCase.xaml"
+        "fileName": "Tests\\TestRecord_Full_SuccessfullyProcess.xaml"
       },
       {
         "editingStatus": "InProgress",
         "testCaseId": "b2d9ad0b-6aef-4000-9096-1bda6e2038da",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
-        "fileName": "Tests\\ProcessTestCase.xaml"
+        "fileName": "Tests\\TestRecord_Full_SpeedOfAnswer_LessThanZero.xaml"
       },
       {
         "editingStatus": "InProgress",
-        "testCaseId": "443844a7-575a-4347-9efa-e3fbe1159a33",
+        "testCaseId": "712ce7a0-8e47-4893-a372-6a09f55fa5fe",
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
-        "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
+        "fileName": "Tests\\TestRecord_Full_AvgTalkDuration_LessThanZero.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "959e961d-18d8-48e5-ae5d-f6f33042f751",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Full_SatisfactionRating_LessThanOne.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "e437c62c-135b-4f36-9818-6943b1fcc843",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Full_SatisfactionRating_GreaterThanFive.xaml"
       }
     ],
     "saveToCloud": false
