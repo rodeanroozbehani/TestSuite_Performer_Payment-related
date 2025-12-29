@@ -96,6 +96,76 @@
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\TestRecord_Full_SatisfactionRating_GreaterThanFive.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "61d5dc5f-1d9c-4ba5-98d8-51f815d20036",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Partial_Missing_Agent.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "d05ebcf4-39b6-4198-b401-5580683eacc7",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Partial_Missing_CallId.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "80e5f9bb-47c5-40ce-a050-e2b4379da04b",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Partial_Missing_DateOfCall.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "8d6ca7e4-21dd-42fa-a144-cc94f734a1f2",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Partial_Missing_Time.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "605356af-6587-4180-a479-15d411d7a6b3",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Partial_Missing_Topic.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "9ed1c376-d48f-4010-9707-9305af2831cc",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Partial_Missing_Answered.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "8aea7a38-76bd-49cc-931e-33daaf11f829",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Partial_Missing_Resolved.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "9c1d6168-09a2-435f-b71e-09904c8d4868",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Partial_Missing_SpeedOfAnswer.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "58fd8bc6-ca8f-4737-be93-6fdb2ef50cba",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Partial_Missing_AverageTalkDuration.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "7cd22469-1f1b-4a86-9c41-7fa8442e36d3",
+        "testCaseType": "TestCase",
+        "executionTemplateType": "Local",
+        "fileName": "Tests\\TestRecord_Partial_Missing_SatisfactionRating.xaml"
       }
     ],
     "saveToCloud": false
