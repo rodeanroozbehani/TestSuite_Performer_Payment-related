@@ -122,7 +122,7 @@
       <AssemblyReference>System.Data.SqlClient</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GenerateTransactionItem" sap:VirtualizedContainerService.HintSize="1402,2547.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GenerateTransactionItem" sap:VirtualizedContainerService.HintSize="673.3333333333333,3334" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Decimal" Name="intSpeedAnswer" />
     </Sequence.Variables>
@@ -131,7 +131,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="GenerateTransactionItem" sap:VirtualizedContainerService.HintSize="486,2524.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="GenerateTransactionItem" sap:VirtualizedContainerService.HintSize="522,3311.3333333333335" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="strName" />
         <Variable x:TypeArguments="x:String" Name="strCallId" />
@@ -147,8 +147,8 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:LogMessage DisplayName="Entering GenerateTransactionItem" sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Entering GenerateTransactionItem&quot;]" />
-      <Assign DisplayName="Assign New Transaction Item" sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <ui:LogMessage DisplayName="Entering GenerateTransactionItem" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Entering GenerateTransactionItem&quot;]" />
+      <Assign DisplayName="Assign New Transaction Item" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_1">
         <Assign.To>
           <OutArgument x:TypeArguments="ui:QueueItem">[TransactionItem]</OutArgument>
         </Assign.To>
@@ -156,7 +156,7 @@
           <InArgument x:TypeArguments="ui:QueueItem">[New UiPath.Core.QueueItem]</InArgument>
         </Assign.Value>
       </Assign>
-      <Assign DisplayName="Initialise SpecificContent" sap:VirtualizedContainerService.HintSize="452,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign DisplayName="Initialise SpecificContent" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[TransactionItem.SpecificContent]</OutArgument>
         </Assign.To>
@@ -164,15 +164,15 @@
           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[New Dictionary(Of String, Object)]</InArgument>
         </Assign.Value>
       </Assign>
-      <If Condition="[booTransactionItem = True]" sap:VirtualizedContainerService.HintSize="452,1744.6666666666667" sap2010:WorkflowViewState.IdRef="If_11">
+      <If Condition="[booTransactionItem = True]" sap:VirtualizedContainerService.HintSize="488,2531.3333333333335" sap2010:WorkflowViewState.IdRef="If_11">
         <If.Then>
-          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,664" sap2010:WorkflowViewState.IdRef="Sequence_25">
+          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="486,664" sap2010:WorkflowViewState.IdRef="Sequence_25">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[booCallId = True]" DisplayName="booCallId_TransactionItem" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_10">
+            <If Condition="[booCallId = True]" DisplayName="booCallId_TransactionItem" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_10">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -215,7 +215,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booAgent = True]" DisplayName="booAgent_TransactionItem" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_9">
+            <If Condition="[booAgent = True]" DisplayName="booAgent_TransactionItem" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_9">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -258,7 +258,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booDate = True]" DisplayName="booDate_TransactionItem" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_8">
+            <If Condition="[booDate = True]" DisplayName="booDate_TransactionItem" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_8">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -293,7 +293,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booTime = True]" DisplayName="booTime_TransactionItem" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_7">
+            <If Condition="[booTime = True]" DisplayName="booTime_TransactionItem" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_7">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -328,7 +328,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booTopic = True]" DisplayName="booTopic_TransactionItem" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_6">
+            <If Condition="[booTopic = True]" DisplayName="booTopic_TransactionItem" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_6">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -370,7 +370,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booAnsweredYN = True]" DisplayName="booAnswered (Y/N)_TransactionItem" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_5">
+            <If Condition="[booAnsweredYN = True]" DisplayName="booAnswered (Y/N)_TransactionItem" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_5">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -412,7 +412,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booResolved = True]" DisplayName="booResolved_TransactionItem" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_4">
+            <If Condition="[booResolved = True]" DisplayName="booResolved_TransactionItem" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -454,7 +454,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booSpeedOfAnswerInSeconds = True]" DisplayName="booSpeedOfAnswerInSeconds_TransactionItem" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[booSpeedOfAnswerInSeconds = True]" DisplayName="booSpeedOfAnswerInSeconds_TransactionItem" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -497,7 +497,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booAvgTalkDuration = True]" DisplayName="booAvgTalkDuration_TransactionItem" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_2">
+            <If Condition="[booAvgTalkDuration = True]" DisplayName="booAvgTalkDuration_TransactionItem" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_2">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -540,7 +540,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booSatisfactionRating = True]" DisplayName="booSatisfactionRating_TransactionItem" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="If_3">
+            <If Condition="[booSatisfactionRating = True]" DisplayName="booSatisfactionRating_TransactionItem" sap:VirtualizedContainerService.HintSize="452,52" sap2010:WorkflowViewState.IdRef="If_3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -589,7 +589,7 @@
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,940.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_26">
+          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="486,1727.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_26">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataRow" Name="drItem" />
               <Variable x:TypeArguments="sd:DataTable" Name="dtItem" />
@@ -599,8 +599,8 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:BuildDataTable DataTable="[dtItem]" DisplayName="Build DtItem" sap:VirtualizedContainerService.HintSize="416,96" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Call_x0020_Id&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Agent&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Date&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Time&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Topic&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Answered_x0020__x0028_Y_x002F_N_x0029_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Resolved&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Speed_x0020_of_x0020_answer_x0020_in_x0020_seconds&quot; msdata:Caption=&quot;&quot; type=&quot;xs:decimal&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;AvgTalkDuration&quot; msdata:Caption=&quot;&quot; type=&quot;xs:decimal&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Satisfaction_x0020_rating&quot; msdata:Caption=&quot;&quot; type=&quot;xs:decimal&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
-            <Assign DisplayName="Assign drItem" sap:VirtualizedContainerService.HintSize="416,180.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_43">
+            <ui:BuildDataTable DataTable="[dtItem]" DisplayName="Build DtItem" sap:VirtualizedContainerService.HintSize="452,96" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Call_x0020_Id&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xD;&#xA;                  &lt;xs:simpleType&gt;&#xD;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xD;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xD;&#xA;                    &lt;/xs:restriction&gt;&#xD;&#xA;                  &lt;/xs:simpleType&gt;&#xD;&#xA;                &lt;/xs:element&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Agent&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Date&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Time&quot; msdata:Caption=&quot;&quot; type=&quot;xs:dateTime&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Topic&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Answered_x0020__x0028_Y_x002F_N_x0029_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Resolved&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Speed_x0020_of_x0020_answer_x0020_in_x0020_seconds&quot; msdata:Caption=&quot;&quot; type=&quot;xs:decimal&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;AvgTalkDuration&quot; msdata:Caption=&quot;&quot; type=&quot;xs:decimal&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Satisfaction_x0020_rating&quot; msdata:Caption=&quot;&quot; type=&quot;xs:decimal&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+            <Assign DisplayName="Assign drItem" sap:VirtualizedContainerService.HintSize="452,180.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_43">
               <Assign.To>
                 <OutArgument x:TypeArguments="sd:DataRow">[drItem]</OutArgument>
               </Assign.To>
@@ -608,10 +608,10 @@
                 <InArgument x:TypeArguments="sd:DataRow">[dtItem.NewRow]</InArgument>
               </Assign.Value>
             </Assign>
-            <If Condition="[booCallId = True]" DisplayName="booCallId" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_12">
+            <If Condition="[booCallId = True]" DisplayName="booCallId" sap:VirtualizedContainerService.HintSize="452,848" sap2010:WorkflowViewState.IdRef="If_12">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
@@ -625,7 +625,7 @@
                   <utat:RandomNumber Decimals="0" DisplayName="Random Number for ID" sap:VirtualizedContainerService.HintSize="416,233.33333333333334" sap2010:WorkflowViewState.IdRef="RandomNumber_5" Max="9999" Min="1" Output="[randomDec]" />
                   <Assign DisplayName="Assign CallId" sap:VirtualizedContainerService.HintSize="416,171.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_27">
                     <Assign.To>
-                      <OutArgument x:TypeArguments="x:Object">[dtItem.NewRow("CallId")]</OutArgument>
+                      <OutArgument x:TypeArguments="x:Object">[dtItem.NewRow("Call Id")]</OutArgument>
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="x:String">["ID" &amp; CInt (randomDec).ToString("D4")]</InArgument>
@@ -651,7 +651,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booAgent = True]" DisplayName="booAgent" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_13">
+            <If Condition="[booAgent = True]" DisplayName="booAgent" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_13">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -694,7 +694,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booDate = True]" DisplayName="booDate" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_14">
+            <If Condition="[booDate = True]" DisplayName="booDate" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_14">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -729,7 +729,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booTime = True]" DisplayName="booTime" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_15">
+            <If Condition="[booTime = True]" DisplayName="booTime" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_15">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -764,7 +764,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booTopic = True]" DisplayName="booTopic" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_16">
+            <If Condition="[booTopic = True]" DisplayName="booTopic" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_16">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -806,7 +806,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booAnsweredYN = True]" DisplayName="booAnswered (Y/N)" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_17">
+            <If Condition="[booAnsweredYN = True]" DisplayName="booAnswered (Y/N)" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_17">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -848,7 +848,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booResolved = True]" DisplayName="booResolved" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_18">
+            <If Condition="[booResolved = True]" DisplayName="booResolved" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_18">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -890,7 +890,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booSpeedOfAnswerInSeconds = True]" DisplayName="booSpeedOfAnswerInSeconds" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_19">
+            <If Condition="[booSpeedOfAnswerInSeconds = True]" DisplayName="booSpeedOfAnswerInSeconds" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_19">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -933,7 +933,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booAvgTalkDuration = True]" DisplayName="booAvgTalkDuration" sap:VirtualizedContainerService.HintSize="416,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_20">
+            <If Condition="[booAvgTalkDuration = True]" DisplayName="booAvgTalkDuration" sap:VirtualizedContainerService.HintSize="452,61.333333333333336" sap2010:WorkflowViewState.IdRef="If_20">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -976,7 +976,7 @@
                 </Sequence>
               </If.Else>
             </If>
-            <If Condition="[booSatisfactionRating = True]" DisplayName="booSatisfactionRating" sap:VirtualizedContainerService.HintSize="416,52" sap2010:WorkflowViewState.IdRef="If_21">
+            <If Condition="[booSatisfactionRating = True]" DisplayName="booSatisfactionRating" sap:VirtualizedContainerService.HintSize="452,52" sap2010:WorkflowViewState.IdRef="If_21">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1025,7 +1025,7 @@
           </Sequence>
         </If.Else>
       </If>
-      <ui:LogMessage DisplayName="Exiting GenerateTransactionItem" sap:VirtualizedContainerService.HintSize="452,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Exiting GenerateTransactionItem&quot;]" />
+      <ui:LogMessage DisplayName="Exiting GenerateTransactionItem" sap:VirtualizedContainerService.HintSize="488,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Exiting GenerateTransactionItem&quot;]" />
     </Sequence>
   </Sequence>
 </Activity>

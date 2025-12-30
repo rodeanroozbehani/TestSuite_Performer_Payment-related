@@ -1,3 +1,4 @@
 {
-  "issueKeyTestcaseValues": {}
+  "issueKeyTestcaseValues": {},
+  "testManagerBasePath": "https://staging.uipath.com/tam_anz/smittenant/testmanager_"
 }
